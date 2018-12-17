@@ -497,7 +497,7 @@ class Line(object):
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
 
-        
+
 
     def line_plus(self, other_line):
         """
