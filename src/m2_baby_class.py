@@ -3,11 +3,34 @@ A   Baby   class and functions that use/test it.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Lucas D'Alesio.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
+
+    class Baby(object):
+        def __init__(self, name):
+            self.name = name
+            self.hourPasses = 0
+            print("Hello baby " + self.name)
+
+        def feed_baby(self):
+            print("Thank you for feeding baby " + self.name)
+
+        def hour_passes(self):
+            if self.hourPasses == 0:
+                print("Baby " + self.name + " is sleeping.")
+                self.hourPasses += 1
+            elif self.hourPasses == 1:
+                print("Baby " + self.name + " is awake. Time for food.")
+                self.hourPasses += 1
+            else:
+                print("Baby " + self.name + " is CRYING uncontrollably! Feed the Baby!")
+                self.hourPasses += 1
+                if 3 < self.hourPasses:
+                    self.hourPasses = 0
+
     """
     After you have made the Baby class, run this module. If your Baby
     class is correct, the output of the code below should be exactly this:
@@ -42,7 +65,7 @@ def main():
 
 
 ###############################################################################
-# TODO: 2.
+# DONE: 2.
 #
 #  Step 2a:  Implement a class called   Baby   that has a constructor method
 #            (__init__) and two other methods, as described below.
