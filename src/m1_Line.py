@@ -90,6 +90,8 @@ class Point(object):
         """ Sets instance variables  x  and  y  to the given coordinates. """
         self.x = x
         self.y = y
+        self.ox = x
+        self.oy = y
         self.numberofclones = 0
 
     def __repr__(self):
@@ -230,6 +232,8 @@ class Line(object):
         self.start = start.clone()
         self.end = end.clone()
         self.num_of_clones = 0
+        self.ostart = self.start
+        self.oend = self.end
 
     def __repr__(self):
         """
@@ -655,7 +659,7 @@ class Line(object):
           :rtype: bool
         """
         # ---------------------------------------------------------------------
-        # TODO: 12.
+        # DONE: 12.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -664,24 +668,12 @@ class Line(object):
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
 
-        if self.start.x == self.end.x:
-            return math.inf
-        else:
-            slope2 = ((self.end.y - self.start.y)/(self.end.x - self.start.x))
-
-        if line2.start.x == line2.end.x:
-            return math.inf
-        else:
-            slope1 = (line2.end.y - line2.start.y) / (line2.end.x - line2.start.x)
-
-        if slope2 == slope1:
+        a = self.slope()
+        b = line2.slope()
+        if round(a, 12) == round(b, 12):
             return True
         else:
             return False
-
-
-
-
 
         #######################################################################
         #
@@ -741,7 +733,7 @@ class Line(object):
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
         # ---------------------------------------------------------------------
-        # TODO: 13.
+        # DONE: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -749,7 +741,10 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
-
+        self.start.x = self.ostart.ox
+        self.start.y = self.ostart.oy
+        self.end.x = self.oend.ox
+        self.end.y = self.oend.oy
 
 ###############################################################################
 # The TEST functions for the  Line  class begin here.
