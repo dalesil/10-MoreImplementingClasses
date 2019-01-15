@@ -21,9 +21,9 @@ def main():
     print(' to run the testing code as you complete the TODOs.')
 
     #run_test_simple_t()
-    run_test_set_colors()
-    # run_test_move_by()
-    # run_test_clone()
+    #run_test_set_colors()
+    #run_test_move_by()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -172,6 +172,11 @@ class CapitalT(object):
         # ---------------------------------------------------------------------
         self.h_rect = rg.Rectangle(rg.Point(intersection_center.x - 0.5*width, intersection_center.y - 0.5*letter_thickness), rg.Point(intersection_center.x + 0.5*width, intersection_center.y + 0.5*letter_thickness))
         self.v_rect = rg.Rectangle(rg.Point(intersection_center.x - 0.5*letter_thickness, intersection_center.y - 0.5*letter_thickness), rg.Point(intersection_center.x + 0.5*letter_thickness, intersection_center.y + (height - 0.5*letter_thickness)))
+        self.intersection_center = intersection_center
+        self.width = width
+        self.height = height
+        self.letter_thickness = letter_thickness
+
 
     def attach_to(self, window):
         """
@@ -265,7 +270,7 @@ class CapitalT(object):
           :type dy: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 6.
+        # DONE: 6.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -277,7 +282,8 @@ class CapitalT(object):
         #        the T moves through, but there is only one T at any moment.
         # ---------------------------------------------------------------------
 
-
+        self.h_rect.move_by(dx, dy)
+        self.v_rect.move_by(dx, dy)
 
     def clone(self):
         """
@@ -300,7 +306,7 @@ class CapitalT(object):
           :rtype: CapitalT
         """
         # ---------------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -313,6 +319,9 @@ class CapitalT(object):
         # variables beyond  h_rect  and  v_rect, at any point of this exercise.
         #######################################################################
 
+        cap = CapitalT(self.intersection_center, self.width, self.height, self.letter_thickness)
+        cap.set_colors(self.h_rect.fill_color, self.h_rect.outline_color)
+        return cap
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
